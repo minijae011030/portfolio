@@ -3,9 +3,9 @@ import getResult from "./service/getResult.service"; // API 요청 함수
 
 const Result = () => {
   const [voteResult, setVoteResult] = useState({
-    result1: 0,
-    result2: 0,
-    total: 0,
+    result1: 30,
+    result2: 100,
+    total: 130,
   });
 
   // 서버에서 데이터 가져오기
@@ -15,9 +15,9 @@ const Result = () => {
     setVoteResult(result);
   };
 
-  useEffect(() => {
-    fetchResult();
-  }, []);
+  //   useEffect(() => {
+  //     fetchResult();
+  //   }, []);
 
   // 투표 비율 계산
   const result1Percentage = voteResult.total
@@ -36,10 +36,14 @@ const Result = () => {
         margin: "auto",
       }}
     >
-      <h2>📊 투표 결과</h2>
+      <h1
+        style={{ marginBottom: "100px", fontSize: "30px", fontWeight: "1000" }}
+      >
+        📊 투표 결과
+      </h1>
 
-      <p>
-        🐶 1: {voteResult.result1}표 ({result1Percentage}%)
+      <p style={{ fontSize: "20px", fontWeight: "500" }}>
+        소주🍶 : {voteResult.result1}표 ({result1Percentage}%)
       </p>
       <div
         style={{
@@ -48,6 +52,7 @@ const Result = () => {
           width: "100%",
           borderRadius: "5px",
           position: "relative",
+          marginBottom: "30px",
         }}
       >
         <div
@@ -62,8 +67,8 @@ const Result = () => {
         />
       </div>
 
-      <p>
-        🐱 2: {voteResult.result2}표 ({result2Percentage}%)
+      <p style={{ fontSize: "20px", fontWeight: "500" }}>
+        맥주🍺: {voteResult.result2}표 ({result2Percentage}%)
       </p>
       <div
         style={{

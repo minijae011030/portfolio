@@ -1,18 +1,23 @@
+import axios from "axios";
+
 export default async function vote({ selected }) {
-  console.log("vote:", selected);
-  return;
-  const result = await fetch(`${process.env.REACT_APP_API}/vote`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  try {
+    const response = await axios.post(
+      "http://10.10.0.237:9000/vote",
+      {
+        voteName: selected,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    body: JSON.stringify({
-      result: selected,
-    }),
-  });
-
-  const res = await result.json();
-  console.log(res);
-  return res;
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error voting:", error);
+    throw error;
+  }
 }

@@ -28,7 +28,31 @@
         background-color: black; */
       }
     </style>
+    <style>
+      body {
+        font-family: "Noto Sans KR", sans-serif !important;
+        background: url("%PUBLIC_URL%/background.jpg") no-repeat center center
+          fixed;
+        background-size: cover;
+        position: relative;
+      }
 
+      /* 배경 위에 어두운 투명 레이어 추가 */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 50% 투명한 검정색 */
+        z-index: -1;
+      }
+
+      * {
+        color: white;
+      }
+    </style>
     <title>Vote</title>
   </head>
   <body>
