@@ -1,53 +1,59 @@
-import { useEffect, useState } from "react";
-import { motion, useScroll } from "framer-motion";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-import Cover from "./section/cover/Cover";
-import Profile from "./section/profile/Profile";
-import Projects from "./section/projects/Projects";
-import Skills from "./section/skill/Skills";
-import Footer from "./section/footer/Footer";
+import { useState } from "react";
+import vote from "./service/vote.service";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  // 투표 수 상태
+  const [selected, setSelected] = useState(null);
+  const navigation = useNavigate();
+  // 라디오 버튼 선택
+  const handleSelect = (event) => {
+    setSelected(event.target.value);
+  };
 
-  const { scrollYProgress } = useScroll();
+  // 투표 버튼 클릭
+  const handleVote = async () => {
+    if (!selected) {
+      alert("항목을 선택해주세요!");
+      return;
+    }
 
-  function handleResize() {
-    setIsSmallScreen(window.innerWidth <= 770);
-  }
+    const res = await vote({ selected });
 
-  useEffect(() => {
-    AOS.init();
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    navigation("/result");
+    return;
+  };
 
   return (
-    <>
-      <motion.div
-        style={{
-          scaleX: scrollYProgress,
-          height: 3,
-          backgroundColor: "#95FF00",
-          position: "fixed",
-          top: 0,
-          right: 0,
-          left: 0,
-          transformOrigin: "left",
-          zIndex: 1000,
-        }}
-      />
+    <div
+      style={{
+        textAlign: "center",
+        padding: "20px",
+        maxWidth: "400px",
+        margin: "auto",
+      }}
+    >
+      <h2>강아지 vs 고양이</h2>
+      <p>어떤 동물을 더 좋아하시나요?</p>
 
-      <Cover />
-      <Profile isSmallScreen={isSmallScreen} />
-      <Skills isSmallScreen={isSmallScreen} />
-      <Projects isSmallScreen={isSmallScreen} />
-      <Footer />
-    </>
+      <div>
+        <label>
+          <input type="radio" name="vote" value={1} onChange={handleSelect} />
+          강아지
+        </label>
+        <label style={{ marginLeft: "15px" }}>
+          <input type="radio" name="vote" value={2} onChange={handleSelect} />
+          고양이
+        </label>
+      </div>
+
+      <button
+        onClick={handleVote}
+        style={{ marginTop: "15px", padding: "10px 20px", cursor: "pointer" }}
+      >
+        투표하기
+      </button>
+    </div>
   );
 }
 
