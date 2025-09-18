@@ -1,14 +1,14 @@
-import { useRef } from "react";
+import { wrap } from "@motionone/utils";
 import {
   motion,
+  useAnimationFrame,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
-  useMotionValue,
   useVelocity,
-  useAnimationFrame,
 } from "framer-motion";
-import { wrap } from "@motionone/utils";
+import { useRef } from "react";
 import styles from "./styles/cover.module.css";
 
 export function ParallaxText({ children, baseVelocity = 100 }) {

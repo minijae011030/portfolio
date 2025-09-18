@@ -5,10 +5,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import Cover from "./section/cover/Cover";
-import Footer from "./section/footer/Footer";
-import Profile from "./section/profile/Profile";
-import Projects from "./section/projects/Projects";
-import Skills from "./section/skill/Skills";
+import Footer from "./section/Footer";
+import Profile from "./section/Profile";
+import Projects from "./section/Projects";
+import Skills from "./section/Skills";
 
 function Home() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);

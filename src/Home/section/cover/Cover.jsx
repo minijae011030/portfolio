@@ -1,4 +1,3 @@
-import React from "react";
 import { ParallaxText } from "./ParallaxText";
 import styles from "./styles/cover.module.css";
 
