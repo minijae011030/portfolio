@@ -7,9 +7,9 @@ function Profile() {
 
       <div
         className="mx-auto flex w-full flex-col items-center gap-6 px-6 "
-        data-aos="fade-up"
-        data-aos-offset="230"
-        data-aos-duration="500"
+        // data-aos="fade-up"
+        // data-aos-offset="230"
+        // data-aos-duration="500"
       >
         <div className="flex w-full flex-col items-center">
           <div className="mb-6 rounded-full border-2 border-white p-2">

@@ -13,8 +13,8 @@ function Project({ project_index, SlidesToShow, isSmallScreen }) {
   return (
     <div
       className="mx-auto mb-24 w-full max-w-[800px]"
-      data-aos="fade-up"
-      data-aos-duration="500"
+      // data-aos="fade-up"
+      // data-aos-duration="500"
     >
       <div className="mb-7 px-6">
         <ImageRender
@@ -166,7 +166,7 @@ function ImageRender({ project_image, SlidesToShow }) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 100000,
     slidesToShow: SlidesToShow,
     slidesToScroll: SlidesToShow,
     autoplay: true,

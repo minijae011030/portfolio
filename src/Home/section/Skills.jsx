@@ -34,9 +34,9 @@ function Skills() {
       {data.map((skill, index) => {
         return (
           <div
-            data-aos="fade-up"
-            data-aos-offset="230"
-            data-aos-duration="500"
+            // data-aos="fade-up"
+            // data-aos-offset="230"
+            // data-aos-duration="500"
             key={index}
           >
             <Skill skill={skill} />
